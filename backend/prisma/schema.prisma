@@ -1,0 +1,111 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// model User {
+//   id        Int       @id @default(autoincrement())
+//   email     String    @unique
+//   name      String?
+//   role      Role      @default(USER)
+//   posts     Post[]
+//   comments  Comment[]
+//   createdAt DateTime  @default(now())
+//   updatedAt DateTime  @updatedAt
+// }
+
+// model Post {
+//   id        Int       @id @default(autoincrement())
+//   title     String
+//   content   String?
+//   published Boolean   @default(false)
+//   author    User      @relation(fields: [authorId], references: [id])
+//   authorId  Int
+//   comments  Comment[]
+//   createdAt DateTime  @default(now())
+//   updatedAt DateTime  @updatedAt
+// }
+
+// model Comment {
+//   id        Int      @id @default(autoincrement())
+//   text      String
+//   post      Post     @relation(fields: [postId], references: [id])
+//   postId    Int
+//   author    User     @relation(fields: [authorId], references: [id])
+//   authorId  Int
+//   createdAt DateTime @default(now())
+// }
+
+// enum Role {
+//   USER
+//   EDITOR
+//   ADMIN
+// }
+
+// ================================================== Homework Starts Here ==================================================
+
+model Student {
+  id   Int    @id @default(autoincrement())
+  name String
+  year Year   @default(FirstGrade)
+
+  // students can have only one teacher = one to many 
+  teacher   Teacher @relation(fields: [teacherId], references: [id])
+  teacherId Int
+  // students can only have one class
+}
+
+model Teacher {
+  id       Int       @id @default(autoincrement())
+  name     String
+  // teachers can have multiple students = one to many
+  students Student[]
+  // teachers can only have one class = one to one 
+  class    Class?
+  classId  Int
+}
+
+model Class {
+  id        Int       @id @default(autoincrement())
+  // classes can only have one teacher = one to one
+  teacher   Teacher   @relation(fields: [teacherId], references: [id])
+  teacherId Int       @unique
+  // classes can have multiple students    
+}
+
+// model StudentClass {
+//   student   Student @relation(fields: [studentId], references: [id])
+//   studentId Int
+
+//   class   Course @relation(fields: [courseId], references: [id])
+//   courseId Int
+
+//   @@id([studentId, courseId])
+// }
+
+enum Year {
+  FirstGrade
+  SecondGrade
+  ThirdGrade
+  FourthGrade
+}
+
+// enum Subject {
+//   Literature
+//   Algebra
+//   Geometry
+//   Chemistry
+//   Biology
+//   History
+// }
