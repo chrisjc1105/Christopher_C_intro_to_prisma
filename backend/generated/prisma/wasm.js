@@ -126,8 +126,7 @@ exports.Prisma.StudentScalarFieldEnum = {
 
 exports.Prisma.TeacherScalarFieldEnum = {
   id: 'id',
-  name: 'name',
-  classId: 'classId'
+  name: 'name'
 };
 
 exports.Prisma.ClassScalarFieldEnum = {

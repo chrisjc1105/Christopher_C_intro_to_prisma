@@ -106,23 +106,23 @@ async function main() {
     
 
     // const teachers = [];
-    for (const classObj of classes) {
-        const teacher = await prisma.teacher.create({
-            data: {
-                name: faker.person.fullName(),
-                class: {
-                    connect: {
-                        id: classObj.id
-                    }
-                }
-            },
-        });
-        teachers.push(teacher);
-        console.log(`Created teacher: ${teacher.name} with ID ${teacher.id}`);
-    }
+    // for (const classObj of classes) {
+    //     const teacher = await prisma.teacher.create({
+    //         data: {
+    //             name: faker.person.fullName(),
+    //             class: {
+    //                 connect: {
+    //                     id: classObj.id
+    //                 }
+    //             }
+    //         },
+    //     });
+    //     teachers.push(teacher);
+    //     console.log(`Created teacher: ${teacher.name} with ID ${teacher.id}`);
+    // }
 
     const students = [];
-    for (const teacher of teachers) {
+    for (const classObj of classes) {
         for (let i = 0; i < 6; i++) {
             const yearNum = faker.number.int({ min: 1, max: 4 });
 
@@ -132,7 +132,7 @@ async function main() {
                     year: yearNum === 1 ? 'FirstGrade' : yearNum === 2 ? 'SecondGrade' : yearNum === 3 ? 'ThirdGrade' : 'FourthGrade',
                     teacher: {
                         connect: {
-                            id: teacher.id,
+                            id: classObj.teacher.id,
                         }
                     },
                 }

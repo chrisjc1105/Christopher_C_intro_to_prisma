@@ -2195,60 +2195,50 @@ export namespace Prisma {
 
   export type TeacherAvgAggregateOutputType = {
     id: number | null
-    classId: number | null
   }
 
   export type TeacherSumAggregateOutputType = {
     id: number | null
-    classId: number | null
   }
 
   export type TeacherMinAggregateOutputType = {
     id: number | null
     name: string | null
-    classId: number | null
   }
 
   export type TeacherMaxAggregateOutputType = {
     id: number | null
     name: string | null
-    classId: number | null
   }
 
   export type TeacherCountAggregateOutputType = {
     id: number
     name: number
-    classId: number
     _all: number
   }
 
 
   export type TeacherAvgAggregateInputType = {
     id?: true
-    classId?: true
   }
 
   export type TeacherSumAggregateInputType = {
     id?: true
-    classId?: true
   }
 
   export type TeacherMinAggregateInputType = {
     id?: true
     name?: true
-    classId?: true
   }
 
   export type TeacherMaxAggregateInputType = {
     id?: true
     name?: true
-    classId?: true
   }
 
   export type TeacherCountAggregateInputType = {
     id?: true
     name?: true
-    classId?: true
     _all?: true
   }
 
@@ -2341,7 +2331,6 @@ export namespace Prisma {
   export type TeacherGroupByOutputType = {
     id: number
     name: string
-    classId: number
     _count: TeacherCountAggregateOutputType | null
     _avg: TeacherAvgAggregateOutputType | null
     _sum: TeacherSumAggregateOutputType | null
@@ -2366,7 +2355,6 @@ export namespace Prisma {
   export type TeacherSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    classId?: boolean
     students?: boolean | Teacher$studentsArgs<ExtArgs>
     class?: boolean | Teacher$classArgs<ExtArgs>
     _count?: boolean | TeacherCountOutputTypeDefaultArgs<ExtArgs>
@@ -2375,22 +2363,19 @@ export namespace Prisma {
   export type TeacherSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    classId?: boolean
   }, ExtArgs["result"]["teacher"]>
 
   export type TeacherSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
-    classId?: boolean
   }, ExtArgs["result"]["teacher"]>
 
   export type TeacherSelectScalar = {
     id?: boolean
     name?: boolean
-    classId?: boolean
   }
 
-  export type TeacherOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "classId", ExtArgs["result"]["teacher"]>
+  export type TeacherOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["teacher"]>
   export type TeacherInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     students?: boolean | Teacher$studentsArgs<ExtArgs>
     class?: boolean | Teacher$classArgs<ExtArgs>
@@ -2408,7 +2393,6 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
-      classId: number
     }, ExtArgs["result"]["teacher"]>
     composites: {}
   }
@@ -2836,7 +2820,6 @@ export namespace Prisma {
   interface TeacherFieldRefs {
     readonly id: FieldRef<"Teacher", 'Int'>
     readonly name: FieldRef<"Teacher", 'String'>
-    readonly classId: FieldRef<"Teacher", 'Int'>
   }
     
 
@@ -4362,8 +4345,7 @@ export namespace Prisma {
 
   export const TeacherScalarFieldEnum: {
     id: 'id',
-    name: 'name',
-    classId: 'classId'
+    name: 'name'
   };
 
   export type TeacherScalarFieldEnum = (typeof TeacherScalarFieldEnum)[keyof typeof TeacherScalarFieldEnum]
@@ -4479,7 +4461,6 @@ export namespace Prisma {
     NOT?: TeacherWhereInput | TeacherWhereInput[]
     id?: IntFilter<"Teacher"> | number
     name?: StringFilter<"Teacher"> | string
-    classId?: IntFilter<"Teacher"> | number
     students?: StudentListRelationFilter
     class?: XOR<ClassNullableScalarRelationFilter, ClassWhereInput> | null
   }
@@ -4487,7 +4468,6 @@ export namespace Prisma {
   export type TeacherOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
-    classId?: SortOrder
     students?: StudentOrderByRelationAggregateInput
     class?: ClassOrderByWithRelationInput
   }
@@ -4498,7 +4478,6 @@ export namespace Prisma {
     OR?: TeacherWhereInput[]
     NOT?: TeacherWhereInput | TeacherWhereInput[]
     name?: StringFilter<"Teacher"> | string
-    classId?: IntFilter<"Teacher"> | number
     students?: StudentListRelationFilter
     class?: XOR<ClassNullableScalarRelationFilter, ClassWhereInput> | null
   }, "id">
@@ -4506,7 +4485,6 @@ export namespace Prisma {
   export type TeacherOrderByWithAggregationInput = {
     id?: SortOrder
     name?: SortOrder
-    classId?: SortOrder
     _count?: TeacherCountOrderByAggregateInput
     _avg?: TeacherAvgOrderByAggregateInput
     _max?: TeacherMaxOrderByAggregateInput
@@ -4520,7 +4498,6 @@ export namespace Prisma {
     NOT?: TeacherScalarWhereWithAggregatesInput | TeacherScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Teacher"> | number
     name?: StringWithAggregatesFilter<"Teacher"> | string
-    classId?: IntWithAggregatesFilter<"Teacher"> | number
   }
 
   export type ClassWhereInput = {
@@ -4612,7 +4589,6 @@ export namespace Prisma {
 
   export type TeacherCreateInput = {
     name: string
-    classId: number
     students?: StudentCreateNestedManyWithoutTeacherInput
     class?: ClassCreateNestedOneWithoutTeacherInput
   }
@@ -4620,14 +4596,12 @@ export namespace Prisma {
   export type TeacherUncheckedCreateInput = {
     id?: number
     name: string
-    classId: number
     students?: StudentUncheckedCreateNestedManyWithoutTeacherInput
     class?: ClassUncheckedCreateNestedOneWithoutTeacherInput
   }
 
   export type TeacherUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
-    classId?: IntFieldUpdateOperationsInput | number
     students?: StudentUpdateManyWithoutTeacherNestedInput
     class?: ClassUpdateOneWithoutTeacherNestedInput
   }
@@ -4635,7 +4609,6 @@ export namespace Prisma {
   export type TeacherUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    classId?: IntFieldUpdateOperationsInput | number
     students?: StudentUncheckedUpdateManyWithoutTeacherNestedInput
     class?: ClassUncheckedUpdateOneWithoutTeacherNestedInput
   }
@@ -4643,18 +4616,15 @@ export namespace Prisma {
   export type TeacherCreateManyInput = {
     id?: number
     name: string
-    classId: number
   }
 
   export type TeacherUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
-    classId?: IntFieldUpdateOperationsInput | number
   }
 
   export type TeacherUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    classId?: IntFieldUpdateOperationsInput | number
   }
 
   export type ClassCreateInput = {
@@ -4818,29 +4788,24 @@ export namespace Prisma {
   export type TeacherCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    classId?: SortOrder
   }
 
   export type TeacherAvgOrderByAggregateInput = {
     id?: SortOrder
-    classId?: SortOrder
   }
 
   export type TeacherMaxOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    classId?: SortOrder
   }
 
   export type TeacherMinOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
-    classId?: SortOrder
   }
 
   export type TeacherSumOrderByAggregateInput = {
     id?: SortOrder
-    classId?: SortOrder
   }
 
   export type ClassCountOrderByAggregateInput = {
@@ -5074,14 +5039,12 @@ export namespace Prisma {
 
   export type TeacherCreateWithoutStudentsInput = {
     name: string
-    classId: number
     class?: ClassCreateNestedOneWithoutTeacherInput
   }
 
   export type TeacherUncheckedCreateWithoutStudentsInput = {
     id?: number
     name: string
-    classId: number
     class?: ClassUncheckedCreateNestedOneWithoutTeacherInput
   }
 
@@ -5103,14 +5066,12 @@ export namespace Prisma {
 
   export type TeacherUpdateWithoutStudentsInput = {
     name?: StringFieldUpdateOperationsInput | string
-    classId?: IntFieldUpdateOperationsInput | number
     class?: ClassUpdateOneWithoutTeacherNestedInput
   }
 
   export type TeacherUncheckedUpdateWithoutStudentsInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    classId?: IntFieldUpdateOperationsInput | number
     class?: ClassUncheckedUpdateOneWithoutTeacherNestedInput
   }
 
@@ -5194,14 +5155,12 @@ export namespace Prisma {
 
   export type TeacherCreateWithoutClassInput = {
     name: string
-    classId: number
     students?: StudentCreateNestedManyWithoutTeacherInput
   }
 
   export type TeacherUncheckedCreateWithoutClassInput = {
     id?: number
     name: string
-    classId: number
     students?: StudentUncheckedCreateNestedManyWithoutTeacherInput
   }
 
@@ -5223,14 +5182,12 @@ export namespace Prisma {
 
   export type TeacherUpdateWithoutClassInput = {
     name?: StringFieldUpdateOperationsInput | string
-    classId?: IntFieldUpdateOperationsInput | number
     students?: StudentUpdateManyWithoutTeacherNestedInput
   }
 
   export type TeacherUncheckedUpdateWithoutClassInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
-    classId?: IntFieldUpdateOperationsInput | number
     students?: StudentUncheckedUpdateManyWithoutTeacherNestedInput
   }
 

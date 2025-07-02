@@ -73,7 +73,6 @@ model Teacher {
   students Student[]
   // teachers can only have one class = one to one 
   class    Class?
-  classId  Int
 }
 
 model Class {
